@@ -4,6 +4,7 @@ require 'bigdecimal'
 require 'nokogiri'
 require 'typhoeus'
 require 'andand'
+require 'addressable/uri'
 
 # require 'active_support'
 # require 'active_support/core_ext'

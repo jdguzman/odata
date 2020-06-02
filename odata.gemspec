@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = %w{lib}
 
-  spec.add_development_dependency 'bundler', '~> 1.6'
+  spec.add_development_dependency 'bundler', ['< 3.0', '>= 1.6']
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'simplecov', '~> 0.8.2'
   spec.add_development_dependency 'codeclimate-test-reporter'
@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'nokogiri', '~> 1.6.2'
   spec.add_dependency 'typhoeus', '~> 0.6.8'
   spec.add_dependency 'andand',   '~> 1.3.3'
+  spec.add_dependency 'addressable', '~> 2.7.0'
 end
