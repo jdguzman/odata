@@ -4,6 +4,8 @@ module OData
   # instantiated directly, but can be. Normally you will access a Query by
   # first asking for one from the OData::EntitySet you want to query.
   class Query
+    attr_reader :or_query
+
     # Create a new Query for the provided EntitySet
     # @param entity_set [OData::EntitySet]
     def initialize(entity_set)
@@ -49,6 +51,11 @@ module OData
     #def or(criteria)
     #
     #end
+
+    def or
+      @or_query = true
+      self
+    end
 
     # Specify properties to order the result by.
     # Can use 'desc' like 'Name desc'
@@ -167,7 +174,8 @@ module OData
     def filter_criteria
       return nil if criteria_set[:filter].empty?
       filters = criteria_set[:filter].collect {|criteria| criteria.to_s}
-      "$filter=#{filters.join(' and ')}"
+      joiner = or_query ? ' or ' : ' and '
+      "$filter=#{filters.join(joiner)}"
     end
 
     def list_criteria(name)
